@@ -1,0 +1,38 @@
+name: Publish to GitHub Package Registry
+
+on:
+  push:
+    branches:
+      - main # or your default branch
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          registry-url: "https://npm.pkg.github.com"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Bump version and Publish to GitHub Packages
+        run: |
+          PACKAGE_VERSION=$(node -p -e "require('./package.json').version")-alpha.$(date +%Y%m%d.%H%M%S)
+          echo "New version: $PACKAGE_VERSION"
+
+          # Update package.json with the new version
+          npm version $PACKAGE_VERSION --no-git-tag-version --allow-same-version
+
+          # Publish the package
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

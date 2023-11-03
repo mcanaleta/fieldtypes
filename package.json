@@ -1,0 +1,42 @@
+{
+  "name": "@mcanaleta/fieldtypes",
+  "author": "Marc Canaleta",
+  "license": "ISC",
+  "version": "0.0.5",
+  "description": "Field types",
+  "main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mcanaleta/fieldtypes.git"
+  },
+  "scripts": {
+    "test": "jest",
+    "build": "rollup -c    # -c is just to use the config file",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "keywords": [
+    "types",
+    "fields",
+    "form",
+    "table",
+    "react",
+    "typescript"
+  ],
+  "devDependencies": {
+    "@babel/preset-env": "^7.23.2",
+    "@babel/preset-typescript": "^7.23.2",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@types/jest": "^29.5.7",
+    "jest": "^29.7.0",
+    "rollup": "^4.2.0",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "typescript": "^5.2.2"
+  }
+}
