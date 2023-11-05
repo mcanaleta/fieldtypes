@@ -18,6 +18,9 @@ export class DecimalType extends DefaultType<number> {
     return v.toString();
   }
   parse(v: string) {
+    if (v == "") {
+      return null;
+    }
     return parseFloat(v);
   }
 }
